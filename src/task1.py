@@ -1,4 +1,4 @@
-from time import time, sleep
+from time import time
 from contextlib import redirect_stdout
 import io
 
@@ -9,9 +9,7 @@ def decorator_1(function):
         st = time()
         with redirect_stdout(io.StringIO()) as f:
             result = function(*args, **kwargs)
-        print(
-            f"{function.__name__} call {wrapper.call_counter} executed in {time() - st : 0.4f} sec"
-        )
+        print(f"{function.__name__} call {wrapper.call_counter} executed in {time() - st : 0.4f} sec")
         return result
 
     wrapper.call_counter = 0
