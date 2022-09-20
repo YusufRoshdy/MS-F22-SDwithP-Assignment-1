@@ -8,9 +8,13 @@ def decorator_2(function):
     def wrapper(*args, **kwargs):
         wrapper.call_counter += 1
         st = time()
+        fun_result = ""
         with redirect_stdout(io.StringIO()) as f:
             result = function(*args, **kwargs)
-        print(f"{function.__name__} call {wrapper.call_counter} executed in {time() - st : 0.4f} sec")
+            fun_result = f.getvalue()
+        print(
+            f"{function.__name__} call {wrapper.call_counter} executed in {time() - st : 0.4f} sec"
+        )
         print(f"Name:   {function.__name__}")
         print(f"Type:   {type(function)}")
         print(f"Sign:   {inspect.signature(function)}")
@@ -34,15 +38,15 @@ def decorator_2(function):
     return wrapper
 
 
-@decorator_2
-def funh(bar1, bar2=""):
-    """
-    This function does something useful
-    :param bar1: description
-    :param bar2: description
-    """
-    print("some\nmultiline\noutput")
-
-
 if __name__ == "__main__":
+
+    @decorator_2
+    def funh(bar1, bar2=""):
+        """
+        This function does something useful
+        :param bar1: description
+        :param bar2: description
+        """
+        print("some\nmultiline\noutput")
+
     funh(None, bar2="")
