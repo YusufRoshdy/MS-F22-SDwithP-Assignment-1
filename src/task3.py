@@ -31,7 +31,7 @@ class Decorator_2:
         self.call_counter = 0
 
     def __call__(self, *args, **kwargs):
-        with redirect_stdout(open("Decorator2_out.txt", "a")):
+        with redirect_stdout(open("Decorator3_out.txt", "a")):
             self.call_counter += 1
             st = time()
             fun_result = ""
@@ -43,7 +43,7 @@ class Decorator_2:
                 except Exception as e:
                     with open("Error log.txt", "a") as f:
                         f.write(datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
-                        f.write(str(e) + "\n")
+                        f.write("\t" + str(e) + "\n")
             run_time = time() - st
             Decorator_2.function_run_times[self.function.__name__] = run_time
 
