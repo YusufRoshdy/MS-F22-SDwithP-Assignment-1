@@ -1,5 +1,6 @@
 import random
 from math import sqrt
+import time
 
 from task1 import decorator_1
 from task2 import decorator_2
@@ -13,8 +14,7 @@ def cube(n=10):
     """This is a dummy function that return n*n*n"""
     _cube = lambda x: x ** 3
     n_cube = _cube(n)
-    for i in range(n):
-        print(i * i * i)
+    time.sleep(0.12)
     return n_cube
 
 
@@ -24,6 +24,7 @@ def sum_sqr(my_list=[10]):
     _sqr = lambda x: x ** 2
     my_sum = sum([_sqr(x) for x in my_list])
     print(my_sum)
+    time.sleep(0.15)
     return my_sum
 
 
@@ -36,6 +37,8 @@ def pascal(n=10):
             print(C, end=" ")
             C = next_element(C)
         print()
+
+    time.sleep(0.18)
 
 
 @test_decorator
@@ -62,9 +65,12 @@ def quadratic(a=1, b=1, c=1):
         print(-b / (2 * a), " + i", sqrt_val)
         print(-b / (2 * a), " - i", sqrt_val)
 
+    time.sleep(0.2)
+
+
 @test_decorator
 def error_fun():
-    return 5/0
+    return 5 / 0
 
 
 if __name__ == "__main__":
