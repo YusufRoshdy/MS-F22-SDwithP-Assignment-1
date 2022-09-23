@@ -4,7 +4,7 @@ import inspect
 import io
 from datetime import datetime
 
-
+# TODO: Add an clear desciton
 class Decorator_1:
     def __init__(self, function):
         self.function = function
@@ -21,7 +21,7 @@ class Decorator_1:
         )
         return result
 
-
+# TODO: Add an clear desciton
 class Decorator_2:
     function_run_times = {}
 
