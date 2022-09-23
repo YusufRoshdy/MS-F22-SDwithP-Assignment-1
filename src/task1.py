@@ -7,10 +7,9 @@ def decorator_1(function):
     def wrapper(*args, **kwargs):
         wrapper.call_counter += 1
         st = time()
-        fun_result = ""
         with redirect_stdout(io.StringIO()) as f:
             result = function(*args, **kwargs)
-            fun_result = f.getvalue()
+            fun_result = f.getvalue()   # This variable is not accessed
         print(
             f"{function.__name__} call {wrapper.call_counter} executed in {time() - st : 0.4f} sec"
         )
