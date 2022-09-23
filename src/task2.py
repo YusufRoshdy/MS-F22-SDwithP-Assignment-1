@@ -8,7 +8,6 @@ def decorator_2(function):
     def wrapper(*args, **kwargs):
         wrapper.call_counter += 1
         st = time()
-        fun_result = ""
         with redirect_stdout(io.StringIO()) as f:
             result = function(*args, **kwargs)
             fun_result = f.getvalue()
