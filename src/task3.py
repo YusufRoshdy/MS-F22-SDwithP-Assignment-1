@@ -13,7 +13,6 @@ class Decorator_1:
     def __call__(self, *args, **kwargs):
         self.call_counter += 1
         st = time()
-        fun_result = ""
         with redirect_stdout(io.StringIO()) as f:
             result = self.function(*args, **kwargs)
             fun_result = f.getvalue()
@@ -53,13 +52,15 @@ class Decorator_2:
             print(f"Name:   {self.function.__name__}")
             print(f"Type:   {type(self.function)}")
             print(f"Sign:   {inspect.signature(self.function)}")
-            print(f"Args:   positional {args}\n{' '*8}key=worded {kwargs}", end="\n\n")
+            print(
+                f"Args:   positional {args}\n{' '*8}key=worded {kwargs}", end="\n\n")
 
             print("Doc:".ljust(8), end="")
 
             if self.function.__doc__ is not None:
                 print(
-                    inspect.getdoc(self.function).replace("\n", "\n" + " " * 8),
+                    inspect.getdoc(self.function).replace(
+                        "\n", "\n" + " " * 8),
                     end="\n\n",
                 )
             else:

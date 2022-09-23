@@ -21,7 +21,6 @@ def decorator_1(function):
 
 if __name__ == "__main__":
     import random
-    from math import sqrt
 
     @decorator_1
     def func():
